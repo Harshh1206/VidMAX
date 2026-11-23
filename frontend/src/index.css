@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #10151b;
+  --color-panel: #171e27;
+  --color-panel-raised: #1d2631;
+  --color-hairline: #2b3643;
+  --color-copy: #e8edf3;
+  --color-muted: #9aa8b8;
+  --color-accent: #6e9cf6;
+  --color-accent-soft: #a8c4ff;
+  --color-good: #7fc2a3;
+  --color-caution: #d8b87a;
+  --color-bad: #e28b8b;
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --radius-frame: 12px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: var(--color-ink);
+  color: var(--color-copy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  color: var(--color-copy);
+}
+
+@keyframes frame-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.frame-arrive {
+  animation: frame-arrive 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
